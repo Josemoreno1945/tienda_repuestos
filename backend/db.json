@@ -1,0 +1,148 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Kit de Pistón Honda CG 150",
+      "description": "Kit completo de pistón con anillos y pasador para Honda CG 150. Fabricado en aleación de aluminio de alta resistencia.",
+      "price": 45.99,
+      "stock": 25,
+      "image": "https://images.unsplash.com/photo-1596638787647-904d822d751e?w=600&h=450&fit=crop&q=80",
+      "category": "Motor",
+      "compatibility": "Honda CG 150"
+    },
+    {
+      "id": 2,
+      "name": "Filtro de Aceite Yamaha FZ",
+      "description": "Filtro de aceite original de alto rendimiento para Yamaha FZ 2.0 y FZ 25. Protege tu motor.",
+      "price": 12.50,
+      "stock": 50,
+      "image": "https://images.unsplash.com/photo-1635073908681-b3fde7ed1118?w=600&h=450&fit=crop&q=80",
+      "category": "Motor",
+      "compatibility": "Yamaha FZ 2.0"
+    },
+    {
+      "id": 3,
+      "name": "Pastillas de Freno Delanteras Bajaj",
+      "description": "Juego de pastillas de freno semimetálicas para Bajaj Pulsar 200 NS. Excelente poder de frenado.",
+      "price": 18.75,
+      "stock": 40,
+      "image": "https://images.unsplash.com/photo-1600712242805-5f78671b24da?w=600&h=450&fit=crop&q=80",
+      "category": "Frenos",
+      "compatibility": "Bajaj Pulsar 200 NS"
+    },
+    {
+      "id": 4,
+      "name": "Disco de Freno Flotante Universal",
+      "description": "Disco de freno flotante de 260mm en acero inoxidable. Diseño perforado para mejor disipación de calor.",
+      "price": 65.00,
+      "stock": 15,
+      "image": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&h=450&fit=crop&q=80",
+      "category": "Frenos",
+      "compatibility": "Universal"
+    },
+    {
+      "id": 5,
+      "name": "Kit de Cadena y Sprockets Suzuki",
+      "description": "Kit completo de transmisión: cadena reforzada + piñón 14T + corona 42T. Acero templado de alta durabilidad.",
+      "price": 38.50,
+      "stock": 30,
+      "image": "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&h=450&fit=crop&q=80",
+      "category": "Transmisión",
+      "compatibility": "Suzuki GN 125"
+    },
+    {
+      "id": 6,
+      "name": "Cable de Embrague Honda CB 190R",
+      "description": "Cable de embrague premium con recubrimiento de teflón para Honda CB 190R.",
+      "price": 9.99,
+      "stock": 60,
+      "image": "https://images.unsplash.com/photo-1596638787647-904d822d751e?w=600&h=450&fit=crop&q=80",
+      "category": "Transmisión",
+      "compatibility": "Honda CB 190R"
+    },
+    {
+      "id": 7,
+      "name": "Casco Integral AGV K1 Negro Mate",
+      "description": "Casco integral AGV K1 con certificación DOT y ECE. Carcasa en policarbonato de alta resistencia.",
+      "price": 189.99,
+      "stock": 10,
+      "image": "https://images.unsplash.com/photo-1558618666-fcd25c85f82e?w=600&h=450&fit=crop&q=80",
+      "category": "Accesorios",
+      "compatibility": "Universal"
+    },
+    {
+      "id": 8,
+      "name": "Guantes de Cuero Racing Pro",
+      "description": "Guantes de cuero genuino con protección en nudillos de carbono. Palma reforzada con gel anti-vibración.",
+      "price": 54.99,
+      "stock": 20,
+      "image": "https://images.unsplash.com/photo-1591370874773-6702e8f12fd8?w=600&h=450&fit=crop&q=80",
+      "category": "Accesorios",
+      "compatibility": "Universal"
+    },
+    {
+      "id": 9,
+      "name": "Bujía NGK Iridium CR8EIX",
+      "description": "Bujía de iridio NGK de alto rendimiento. Electrodo central ultrafino para mejor encendido.",
+      "price": 14.25,
+      "stock": 100,
+      "image": "https://images.unsplash.com/photo-1635073908681-b3fde7ed1118?w=600&h=450&fit=crop&q=80",
+      "category": "Motor",
+      "compatibility": "Universal"
+    },
+    {
+      "id": 10,
+      "name": "Amortiguador Trasero YSS Ajustable",
+      "description": "Amortiguador trasero YSS de gas con precarga ajustable en 5 posiciones.",
+      "price": 125.00,
+      "stock": 8,
+      "image": "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=600&h=450&fit=crop&q=80",
+      "category": "Accesorios",
+      "compatibility": "Yamaha YBR 125"
+    },
+    {
+      "id": 11,
+      "name": "Kit de Juntas Motor Completo",
+      "description": "Kit completo de juntas de motor en material de amianto libre.",
+      "price": 22.00,
+      "stock": 35,
+      "image": "https://images.unsplash.com/photo-1596638787647-904d822d751e?w=600&h=450&fit=crop&q=80",
+      "category": "Motor",
+      "compatibility": "Honda CG 150"
+    },
+    {
+      "id": 12,
+      "name": "Maniguetas de Freno CNC Plegables",
+      "description": "Par de maniguetas CNC en aluminio anodizado con diseño plegable anti-rotura.",
+      "price": 42.50,
+      "stock": 18,
+      "image": "https://images.unsplash.com/photo-1609630875171-b1321377ee65?w=600&h=450&fit=crop&q=80",
+      "category": "Frenos",
+      "compatibility": "Universal"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "name": "Carlos Mendoza",
+      "email": "carlos@email.com",
+      "password": "client123",
+      "role": "client"
+    },
+    {
+      "id": 2,
+      "name": "María García",
+      "email": "maria@email.com",
+      "password": "client456",
+      "role": "client"
+    },
+    {
+      "id": 3,
+      "name": "Admin MotoRepuestos",
+      "email": "admin@motorepuestos.com",
+      "password": "admin789",
+      "role": "admin"
+    }
+  ],
+  "orders": []
+}
