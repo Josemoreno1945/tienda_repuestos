@@ -1,21 +1,20 @@
-const axios = require('axios');
-const JSON_SERVER = 'http://localhost:3001';
+const { getDb } = require('../config/database');
 
 const userModel = {
   /**
    * Buscar usuario por email
    */
   async findByEmail(email) {
-    const { data } = await axios.get(`${JSON_SERVER}/users?email=${email}`);
-    return data.length > 0 ? data[0] : null;
+    const db = await getDb();
+    return await db.get('SELECT * FROM users WHERE email = ?', [email]);
   },
 
   /**
    * Obtener usuario por ID
    */
   async getById(id) {
-    const { data } = await axios.get(`${JSON_SERVER}/users/${id}`);
-    return data;
+    const db = await getDb();
+    return await db.get('SELECT * FROM users WHERE id = ?', [id]);
   },
 };
 

@@ -4,9 +4,10 @@ const productRoutes = require('./src/routes/productRoutes');
 const userRoutes = require('./src/routes/userRoutes');
 const checkoutRoutes = require('./src/routes/checkoutRoutes');
 const { errorHandler } = require('./src/middlewares/errorHandler');
+const { getDb } = require('./src/config/database');
 
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5001;
 
 // ── Middlewares globales ─────────────────────────────────────────
 app.use(cors());
@@ -26,9 +27,14 @@ app.get('/api/health', (req, res) => {
 app.use(errorHandler);
 
 // ── Iniciar servidor ─────────────────────────────────────────────
-app.listen(PORT, () => {
+app.listen(PORT, async () => {
+  try {
+    await getDb();
+  } catch (e) {
+    console.error("Error al inicializar la base de datos", e);
+  }
   console.log(`\n🏍️  MotoRepuestos API corriendo en http://localhost:${PORT}`);
-  console.log(`📦  JSON Server debe estar corriendo en http://localhost:3001`);
+  console.log(`📦  Base de datos SQLite lista`);
   console.log(`\n📋  Endpoints disponibles:`);
   console.log(`   GET  /api/products          - Listar productos`);
   console.log(`   GET  /api/products/:id      - Obtener producto`);

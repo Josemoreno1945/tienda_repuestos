@@ -72,6 +72,12 @@ export default function Navbar({ onSearch, onCategoryFilter }) {
 
         {/* Acciones */}
         <div className="navbar-actions">
+          {user && user.role === 'admin' && (
+            <Link to="/admin/inventory" className="btn-secondary-hero" style={{ padding: '0.4rem 0.8rem', marginRight: '0.5rem', fontSize: '0.85rem' }}>
+              Inventario
+            </Link>
+          )}
+
           {user ? (
             <div className="user-menu-nav">
               <span className="user-greeting">Hola, {user.name.split(' ')[0]}</span>

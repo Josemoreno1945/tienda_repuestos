@@ -4,16 +4,14 @@
   "description": "Backend API para plataforma de repuestos de motos",
   "main": "server.js",
   "scripts": {
-    "start": "concurrently \"json-server --watch db.json --port 3001\" \"node server.js\"",
-    "dev": "concurrently \"json-server --watch db.json --port 3001\" \"node server.js\"",
-    "json-server": "json-server --watch db.json --port 3001"
+    "start": "node server.js",
+    "dev": "node server.js"
   },
   "dependencies": {
-    "axios": "^1.7.0",
-    "concurrently": "^8.2.0",
     "cors": "^2.8.5",
     "express": "^4.18.2",
-    "json-server": "^0.17.4",
+    "sqlite": "^5.1.1",
+    "sqlite3": "^6.0.1",
     "zod": "^3.23.0"
   }
 }

@@ -44,34 +44,27 @@ export default function ProductCard({ product }) {
         <div className="product-footer">
           <span className="product-price">${product.price.toFixed(2)}</span>
           
-          {user?.role === 'admin' ? (
-            <div className="admin-actions">
-              <button className="btn-edit" onClick={() => alert('Abrir modal de edición')}>Editar</button>
-              <button className="btn-delete" onClick={() => alert('Eliminar producto')}>Eliminar</button>
-            </div>
-          ) : (
-            <button
-              className="add-to-cart-btn"
-              onClick={() => {
-                if (!user) {
-                  navigate('/login');
-                } else {
-                  addToCart(product);
-                }
-              }}
-              disabled={product.stock === 0}
-              id={`add-cart-${product.id}`}
-            >
-              {product.stock === 0 ? 'Agotado' : (
-                <>
-                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
-                    <path d="M12 5v14M5 12h14"/>
-                  </svg>
-                  Comprar
-                </>
-              )}
-            </button>
-          )}
+          <button
+            className="add-to-cart-btn"
+            onClick={() => {
+              if (!user) {
+                navigate('/login');
+              } else {
+                addToCart(product);
+              }
+            }}
+            disabled={product.stock === 0}
+            id={`add-cart-${product.id}`}
+          >
+            {product.stock === 0 ? 'Agotado' : (
+              <>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M12 5v14M5 12h14"/>
+                </svg>
+                Comprar
+              </>
+            )}
+          </button>
         </div>
       </div>
     </div>

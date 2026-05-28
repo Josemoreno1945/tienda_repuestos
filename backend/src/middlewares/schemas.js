@@ -37,4 +37,21 @@ const loginSchema = z.object({
   password: z.string().min(1, 'La contraseña es requerida'),
 });
 
-module.exports = { checkoutSchema, loginSchema };
+// Esquema de validación para productos
+const productSchema = z.object({
+  name: z.string().min(2, 'El nombre debe tener al menos 2 caracteres'),
+  description: z.string().optional(),
+  price: z.number().positive('El precio debe ser un número positivo'),
+  stock: z.number().int().nonnegative('El stock no puede ser negativo'),
+  image: z.string().url('Debe ser una URL válida').optional().or(z.literal('')),
+  category: z.string().min(2, 'La categoría es requerida'),
+  compatibility: z.string().optional(),
+  status: z.enum(['active', 'inactive']).default('active'),
+});
+
+// Esquema parcial para actualizaciones PATCH (reactivar/desactivar)
+const productPatchSchema = z.object({
+  status: z.enum(['active', 'inactive']),
+});
+
+module.exports = { checkoutSchema, loginSchema, productSchema, productPatchSchema };

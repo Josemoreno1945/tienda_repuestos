@@ -9,9 +9,27 @@ const api = axios.create({
   },
 });
 
+api.interceptors.request.use((config) => {
+  const user = localStorage.getItem('motorepuestos_user');
+  if (user) {
+    const { role } = JSON.parse(user);
+    if (role) {
+      config.headers['x-user-role'] = role;
+    }
+  }
+  return config;
+});
+
 export const productService = {
   getAll: (params = {}) => api.get('/products', { params }),
   getById: (id) => api.get(`/products/${id}`),
+  create: (data) => api.post('/products', data),
+  update: (id, data) => api.put(`/products/${id}`, data),
+  delete: (id) => api.delete(`/products/${id}`),
+  // Borrado lógico: cambia status a 'inactive'
+  softDelete: (id) => api.patch(`/products/${id}/status`, { status: 'inactive' }),
+  // Reactivar: cambia status a 'active'
+  reactivate: (id) => api.patch(`/products/${id}/status`, { status: 'active' }),
 };
 
 export const authService = {

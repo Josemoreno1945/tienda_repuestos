@@ -11,6 +11,7 @@ import CatalogPage from './pages/CatalogPage';
 import CheckoutPage from './pages/CheckoutPage';
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
+import AdminInventoryPage from './pages/AdminInventoryPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import './App.css';
 
@@ -97,8 +98,15 @@ function App() {
                     </ProtectedRoute>
                   }
                 />
-                {/* Ejemplo de ruta para Admin que podrías agregar después */}
-                {/* <Route path="/admin/products" element={<ProtectedRoute allowedRoles={['admin']}><AdminPanel /></ProtectedRoute>} /> */}
+                {/* Ruta protegida para el inventario del Admin */}
+                <Route 
+                  path="/admin/inventory" 
+                  element={
+                    <ProtectedRoute allowedRoles={['admin']}>
+                      <AdminInventoryPage />
+                    </ProtectedRoute>
+                  } 
+                />
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/register" element={<RegisterPage />} />
               </Routes>

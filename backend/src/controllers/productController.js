@@ -7,8 +7,11 @@ const productController = {
    */
   async getAll(req, res, next) {
     try {
-      const { category, q, compatibility } = req.query;
-      const products = await productModel.getAll({ category, q, compatibility });
+      const { category, q, compatibility, all } = req.query;
+      const userRole = req.headers['x-user-role'];
+      const includeInactive = (all === 'true' && userRole === 'admin');
+
+      const products = await productModel.getAll({ category, q, compatibility, all: includeInactive });
       res.json({ success: true, data: products });
     } catch (error) {
       next(error);
@@ -45,8 +48,8 @@ const productController = {
    */
   async create(req, res, next) {
     try {
-      const { data } = await axios.post(`${JSON_SERVER}/products`, req.body);
-      res.status(201).json({ success: true, message: 'Producto creado', data });
+      const newProduct = await productModel.create(req.body);
+      res.status(201).json({ success: true, message: 'Producto creado', data: newProduct });
     } catch (error) {
       next(error);
     }
@@ -58,28 +61,48 @@ const productController = {
    */
   async update(req, res, next) {
     try {
-      const { data } = await axios.put(`${JSON_SERVER}/products/${req.params.id}`, req.body);
-      res.json({ success: true, message: 'Producto actualizado', data });
-    } catch (error) {
-      if (error.response && error.response.status === 404) {
+      const product = await productModel.getById(req.params.id);
+      if (!product) {
         return res.status(404).json({ success: false, message: 'Producto no encontrado' });
       }
+      const updatedProduct = await productModel.update(req.params.id, req.body);
+      res.json({ success: true, message: 'Producto actualizado', data: updatedProduct });
+    } catch (error) {
       next(error);
     }
   },
 
   /**
    * DELETE /api/products/:id (Solo Admin)
-   * Eliminar un producto
+   * Borrado lógico: marca el producto como 'inactive'
    */
   async delete(req, res, next) {
     try {
-      await axios.delete(`${JSON_SERVER}/products/${req.params.id}`);
-      res.json({ success: true, message: 'Producto eliminado correctamente' });
-    } catch (error) {
-      if (error.response && error.response.status === 404) {
+      const product = await productModel.getById(req.params.id);
+      if (!product) {
         return res.status(404).json({ success: false, message: 'Producto no encontrado' });
       }
+      await productModel.delete(req.params.id);
+      res.json({ success: true, message: 'Producto desactivado correctamente' });
+    } catch (error) {
+      next(error);
+    }
+  },
+
+  /**
+   * PATCH /api/products/:id/status (Solo Admin)
+   * Cambiar el estado del producto (reactivar o desactivar)
+   */
+  async patchStatus(req, res, next) {
+    try {
+      const product = await productModel.getById(req.params.id);
+      if (!product) {
+        return res.status(404).json({ success: false, message: 'Producto no encontrado' });
+      }
+      const { status } = req.body;
+      const updatedProduct = await productModel.updateStatus(req.params.id, status);
+      res.json({ success: true, message: `Producto ${status === 'active' ? 'reactivado' : 'desactivado'}`, data: updatedProduct });
+    } catch (error) {
       next(error);
     }
   },
