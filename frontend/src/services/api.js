@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const api = axios.create({
   // En producción usa la URL de Render. En local usa '/api'.
-  baseURL: import.meta.env.VITE_API_URL || '/api',
+  baseURL: 'https://tienda-repuestos.onrender.com/api',
   timeout: 15000,
   headers: {
     'Content-Type': 'application/json',
