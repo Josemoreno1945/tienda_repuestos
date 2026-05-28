@@ -10,7 +10,13 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 
 // ── Middlewares globales ─────────────────────────────────────────
-app.use(cors());
+const corsOptions = {
+  origin: process.env.CORS_ORIGIN || '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
+  allowedHeaders: ['Content-Type', 'x-user-role'], // Permitimos el header de rol
+};
+
+app.use(cors(corsOptions));
 app.use(express.json());
 
 // ── Rutas ────────────────────────────────────────────────────────

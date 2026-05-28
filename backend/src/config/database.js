@@ -8,7 +8,7 @@ let dbPromise = null;
 async function initDb() {
   // Abrir conexión a la base de datos (creará el archivo database.sqlite si no existe)
   const db = await open({
-    filename: path.join(__dirname, '../../database.sqlite'),
+    filename: process.env.DATABASE_PATH || path.join(__dirname, '../../database.sqlite'),
     driver: sqlite3.Database
   });
 
@@ -70,17 +70,17 @@ async function initDb() {
       const dbJsonPath = path.join(__dirname, '../../db.json');
       if (fs.existsSync(dbJsonPath)) {
         const data = JSON.parse(fs.readFileSync(dbJsonPath, 'utf8'));
-        
+
         if (data.users) {
           for (const u of data.users) {
-            await db.run('INSERT INTO users (id, name, email, password, role) VALUES (?, ?, ?, ?, ?)', 
+            await db.run('INSERT INTO users (id, name, email, password, role) VALUES (?, ?, ?, ?, ?)',
               [u.id, u.name, u.email, u.password, u.role]);
           }
         }
-        
+
         if (data.products) {
           for (const p of data.products) {
-            await db.run('INSERT INTO products (id, name, description, price, stock, image, category, compatibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', 
+            await db.run('INSERT INTO products (id, name, description, price, stock, image, category, compatibility) VALUES (?, ?, ?, ?, ?, ?, ?, ?)',
               [p.id, p.name, p.description, p.price, p.stock, p.image, p.category, p.compatibility]);
           }
         }
