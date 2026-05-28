@@ -6,9 +6,18 @@ const path = require('path');
 let dbPromise = null;
 
 async function initDb() {
-  // Abrir conexión a la base de datos (creará el archivo database.sqlite si no existe)
+  // 1. Determinar la ruta final del archivo
+  const dbPath = process.env.DATABASE_PATH || path.join(__dirname, '../../database.sqlite');
+  // 2. Extraer solo la ruta de la carpeta (ignorando el nombre del archivo)
+  const dbDir = path.dirname(dbPath);
+  // 3. Crear la carpeta si no existe (Esto soluciona el error SQLITE_CANTOPEN en Render)
+  if (!fs.existsSync(dbDir)) {
+    fs.mkdirSync(dbDir, { recursive: true });
+    console.log(`📂 Directorio de base de datos creado en: ${dbDir}`);
+  }
+  // 4. Abrir conexión a la base de datos
   const db = await open({
-    filename: process.env.DATABASE_PATH || path.join(__dirname, '../../database.sqlite'),
+    filename: dbPath,
     driver: sqlite3.Database
   });
 
